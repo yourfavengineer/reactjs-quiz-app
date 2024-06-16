@@ -40,7 +40,7 @@ const questionSchema = new mongoose.Schema(
 // Create a model from the schema
 const Question = mongoose.model("Question", questionSchema);
 
-// Routes
+// Routes trafic to application
 // GET all questions
 app.get("/api/questions", async (req, res) => {
   try {
