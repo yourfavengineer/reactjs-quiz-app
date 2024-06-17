@@ -242,7 +242,7 @@ jobs:
     - name: Snyk Container monitor
       run: snyk container monitor ${{ secrets.DOCKER_USERNAME }}/backend-api --file=Dockerfile   
       working-directory: ./backend
-
+# to run my workflow in the backend folder
     - name: Run Snyk to check for vulnerabilities in the Docker image
       uses: snyk/actions/docker@master
       with:
