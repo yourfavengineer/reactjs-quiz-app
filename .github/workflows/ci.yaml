@@ -118,8 +118,6 @@ jobs:
           
       - name: Install Snyk CLI
         uses: snyk/actions/setup@master
-        with:
-          version: latest
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}  
          
@@ -140,14 +138,13 @@ jobs:
       - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@master
-        continue-on-error: true # To make sure that SARIF upload gets called
+        continue-on-error: true # To make sure that SARIF upload gets called when there are no vulnerabilities
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
          
       - name: Install Snyk CLI
         uses: snyk/actions/setup@master
-        with:
-          version: latest
+
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
           
@@ -185,8 +182,6 @@ jobs:
 
     - name: Install Snyk CLI
       uses: snyk/actions/setup@master
-      with:
-        snyk-token: ${{ secrets.SNYK_TOKEN }}
        
     - name: Snyk Authenticate    
       run: snyk auth ${{ secrets.SNYK_TOKEN }}
@@ -233,8 +228,6 @@ jobs:
         
     - name: Install Snyk CLI
       uses: snyk/actions/setup@master
-      with:
-        snyk-token: ${{ secrets.SNYK_TOKEN }}
      
     - name: Snyk Authenticate    
       run: snyk auth ${{ secrets.SNYK_TOKEN }}
