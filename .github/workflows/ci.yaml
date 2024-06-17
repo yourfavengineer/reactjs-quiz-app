@@ -43,7 +43,7 @@ jobs:
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets._GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           projectBaseDir: quiz-app
@@ -89,7 +89,7 @@ jobs:
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets._GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           projectBaseDir: backend
@@ -118,6 +118,8 @@ jobs:
           
       - name: Install Snyk CLI
         uses: snyk/actions/setup@master
+        with:
+          version: latest
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}  
          
@@ -144,7 +146,8 @@ jobs:
          
       - name: Install Snyk CLI
         uses: snyk/actions/setup@master
-
+        with:
+          version: latest
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
           
@@ -182,6 +185,8 @@ jobs:
 
     - name: Install Snyk CLI
       uses: snyk/actions/setup@master
+      with:
+        snyk-token: ${{ secrets.SNYK_TOKEN }}
        
     - name: Snyk Authenticate    
       run: snyk auth ${{ secrets.SNYK_TOKEN }}
@@ -228,6 +233,8 @@ jobs:
         
     - name: Install Snyk CLI
       uses: snyk/actions/setup@master
+      with:
+        snyk-token: ${{ secrets.SNYK_TOKEN }}
      
     - name: Snyk Authenticate    
       run: snyk auth ${{ secrets.SNYK_TOKEN }}
